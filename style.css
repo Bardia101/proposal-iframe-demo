@@ -1,0 +1,27 @@
+.container {
+    width: auto;
+    max-width: 1080px;
+    padding: 0 15px;
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.iframe-card {
+    height: 400px;
+    width: auto;
+}
+
+@media (min-width: 768px) {
+    .iframe-card {
+        height: 500px;
+        width: auto;
+    }
+}
