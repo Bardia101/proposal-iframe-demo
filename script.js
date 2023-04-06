@@ -131,7 +131,6 @@ function generate() {
     } catch (err) {
         console.log(err);
     }
-    
 }
 
 /**
@@ -158,6 +157,41 @@ function loadProposal() {
                     HouseDSM: true,
                 },
             }
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/**
+ * This function is used to rerun the design process for an already fetched lead with imagery
+ */
+function rerun() {
+    const uid = $('#lead-id').val();
+
+    try {
+        sendMessage({
+            cmd: 'rerun',
+            params: { uid },
+            config: {
+                setback: 6, // inch
+                buffer: 0.5, // inch
+                panel: {
+                    manufacturer: 'REC',
+                    dimensions: { length: 1821, width: 890 },
+                    degradation: 0.26, // %
+                    efficiency: 21.6, // %
+                    has_micro: false,
+                    model: 'REC400AA',
+                    power: 400,
+                },
+                inverter: {
+                    capacity: 10000,
+                    efficiency: 96.0, // %
+                    model: 'Enphase',
+                    type: 'Central', // 'Micro' | 'Central'
+                },
+            },
         });
     } catch (err) {
         console.log(err);
