@@ -28,53 +28,65 @@
 
     <!-- Begin page content -->
     <main class="flex-shrink-0">
+		<a class="btn btn-link" href='../designer-iframe-demo/index.html'>Go To Designer Page</a>
+
         <div class="container">
             <h1 class="mt-5">iframe demo</h1>
 
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">Coordinates</span>
-                        <input id="coordinates" type="text" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm mt-2">
-                        <span class="input-group-text">Electricity Usage</span>
-                        <input id="usage" type="text" class="form-control">
-                    </div>
+					<form>
+						<div class="input-group input-group-sm">
+							<span class="input-group-text">Coordinates</span>
+							<input id="coordinates" type="text" class="form-control">
+						</div>
+						<div class="input-group input-group-sm mt-2">
+							<span class="input-group-text">Electricity Usage</span>
+							<input id="usage" type="text" class="form-control">
+						</div>
+						<div class="input-group input-group-sm mt-5">
+							<span class="input-group-text">Lead ID</span>
+							<input id="lead-id" type="text" class="form-control">
+							<div class="input-group-append">
+								<button class="input-group-text copyID">C</button>
+							</div>
+						</div>
+						<div class="input-group input-group-sm mt-2">
+							<span class="input-group-text">Proposal ID</span>
+							<input id="proposal-id" type="text" class="form-control">
+							<div class="input-group-append">
+								<button class="input-group-text copyID">C</button>
+							</div>
+						</div>
+						<div class="input-group input-group-sm mt-5">
+							<span class="input-group-text">Production</span>
+							<input id="production" type="text" class="form-control">
+						</div>
 
-                    <div class="input-group input-group-sm mt-5">
-                        <span class="input-group-text">Lead ID</span>
-                        <input id="lead-id" type="text" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm mt-2">
-                        <span class="input-group-text">Proposal ID</span>
-                        <input id="proposal-id" type="text" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm mt-5">
-                        <span class="input-group-text">Production</span>
-                        <input id="production" type="text" class="form-control">
-                    </div>
-
-                    <div class="d-grid gap-2 mt-5">
-                        <button class="btn btn-dark" type="button" onclick="generate()">New Lead</button>
-                    </div>
-                    <div class="d-grid gap-2 mt-1">
-                        <button class="btn btn-dark" type="button" onclick="loadProposal()">Load Proposal</button>
-                    </div>
-                    <div class="d-grid gap-2 mt-1">
-                        <button class="btn btn-dark" type="button" onclick="rerun()">Rerun Design</button>
-                    </div>
-                    <div class="d-grid gap-2 mt-4">
-                        <div class="input-group">
-                            <select class="form-select" id="func">
-                                <option selected>Choose...</option>
-                                <option value="1">Get Shading Values</option>
-                                <option value="2">Get Roof Orientation</option>
-                                <option value="3">Get Production Per Panel</option>
-                            </select>
-                            <button class="btn btn-outline-dark" type="button" onclick="handleFunc()">Run</button>
-                        </div>
-                    </div>
+						<div class="d-grid gap-2 mt-5">
+							<button class="btn btn-dark" type="reset"">Reset</button>
+						</div>
+						<div class="d-grid gap-2 mt-1">
+							<button class="btn btn-dark" type="button" onclick="generate()">New Lead</button>
+						</div>
+						<div class="d-grid gap-2 mt-1">
+							<button class="btn btn-dark" type="button" onclick="loadProposal()">Load Proposal</button>
+						</div>
+						<div class="d-grid gap-2 mt-1">
+							<button class="btn btn-dark" type="button" onclick="rerun()">Rerun Design</button>
+						</div>
+						<div class="d-grid gap-2 mt-4">
+							<div class="input-group">
+								<select class="form-select" id="func">
+									<option selected>Choose...</option>
+									<option value="1">Get Shading Values</option>
+									<option value="2">Get Roof Orientation</option>
+									<option value="3">Get Production Per Panel</option>
+								</select>
+								<button class="btn btn-outline-dark" type="button" onclick="handleFunc()">Run</button>
+							</div>
+						</div>
+					</form>
                 </div>
                 <div class="col-lg-8">
                     <div class="card iframe-card">
@@ -100,7 +112,12 @@
     <script>
         $(function () {
             window.addEventListener('message', handleMessage);
+			$('.copyID').click(function() {
+				v = $(this).parent().prev('input').val();
+				navigator.clipboard.writeText(v);
+			});
         });
+		
     </script>
 </body>
 
